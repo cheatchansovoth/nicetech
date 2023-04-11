@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Topbar } from "./component/Topbar";
+import ThemeContext from "./component/context/ThemeContext";
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gray-800 text-white min-h-screen">
+      <ThemeContext.Provider value={{ isDark, setIsDark }}>
+        <Topbar />
+      </ThemeContext.Provider>
     </div>
   );
 }
