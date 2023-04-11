@@ -1,0 +1,12 @@
+[
+{    "ramID": 1,    "brand": "Corsair",    "model": "Vengeance LPX",    "speed": "3200 MHz",    "capacity": "16 GB",    "price": 89.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMCOR74899__4.jpg?h=3720456114"},
+{    "ramID": 2,    "brand": "G.Skill",    "model": "Trident Z RGB",    "speed": "3600 MHz",    "capacity": "32 GB",    "price": 229.99,"imageurl":"https://www.pbtech.co.nz/imgprod/default/M/E/MEMGSK32030__7.webp?h=2778124913"  }, 
+{    "ramID": 3,    "brand": "Kingston",    "model": "HyperX Fury",    "speed": "2666 MHz",    "capacity": "8 GB",    "price": 39.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMKHX31010__5.jpg?h=838547612"  },  
+{    "ramID": 4,    "brand": "Crucial",    "model": "Ballistix",    "speed": "3000 MHz",    "capacity": "32 GB",    "price": 179.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMKHX328646__1.jpg?h=1117377911"  },
+{    "ramID": 5,    "brand": "ADATA",    "model": "XPG Spectrix D50",    "speed": "3600 MHz",    "capacity": "16 GB",    "price": 99.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMADM20401__1.jpg?h=3959922808"  },
+{    "ramID": 6,    "brand": "TeamGroup",    "model": "T-Force Vulcan",    "speed": "3200 MHz",    "capacity": "8 GB",    "price": 44.99,"imageurl":"https://d3fa68hw0m2vcc.cloudfront.net/48d/260281080.jpeg"  },
+{    "ramID": 7,    "brand": "Patriot Memory",    "model": "Viper Steel",    "speed": "3200 MHz",    "capacity": "16 GB",    "price": 84.99,"imageurl":"https://www.bhphotovideo.com/cdn-cgi/image/format=auto,fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/patriot_pvs416g320c6_v4s_16gb_3200mhz_cl16_1562768498_1477900.jpg"  },
+{    "ramID": 8,    "brand": "HyperX",    "model": "Fury RGB",    "speed": "3200 MHz",    "capacity": "16 GB",    "price": 99.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMKHX31210__1.jpg?h=1316119848"  },
+{    "ramID": 9,    "brand": "Crucial",    "model": "Ballistix Max",    "speed": "4000 MHz",    "capacity": "32 GB",    "price": 379.99,"imageurl":"https://www.pbtech.co.nz/imgprod/M/E/MEMKHX328660__1.jpg?h=3304858712"  },
+{    "ramID": 10,    "brand": "G.Skill",    "model": "Ripjaws V",    "speed": "3200 MHz",    "capacity": "32 GB",    "price": 209.99,"imageurl":"https://www.pbtech.co.nz/imgprod/default/M/E/MEMGSK0361__4.webp?h=2800479991" }
+]
