@@ -45,7 +45,7 @@ export const Topbar = () => {
         <div className="w-[50%] flex justify-center items-center">
           <input
             type="text"
-            className="w-2/3 rounded-full bg-gray-400 py-2 text-black placeholder:text-black placeholder:text-xl "
+            className="w-2/3 rounded-full bg-gray-200 py-2 text-black placeholder:text-black placeholder:text-xl "
             style={{ paddingLeft: "30px" }}
             placeholder="Search for products"
           ></input>
