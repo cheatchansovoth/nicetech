@@ -127,42 +127,44 @@ export const Center = () => {
           </div>
         </div>
       </div>
-      <div className="my-[20px] bg-blue-300 py-3 min-h-[200px] flex flex-col justify-center w-[100%] rounded-xl md:w-[90%] mx-auto">
-        <div className="grid grid-cols-4 ">
-          <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
-            <span className="text-6xl bg-blue-300 rounded-lg">
-              <TbTruckDelivery />
-            </span>
-            <div>
-              <h1 className="font-bold text-xl">Free Delivery</h1>
-              <p className="font-light">Free shipping on all orders</p>
+      <div className="my-4">
+        <div className="bg-blue-300 lg:min-h-[200px] flex flex-col justify-center w-[100%] rounded-xl md:w-[90%] mx-auto">
+          <div className="grid grid-cols-4 ">
+            <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
+              <span className="text-6xl bg-blue-300 rounded-lg">
+                <TbTruckDelivery />
+              </span>
+              <div>
+                <h1 className="font-bold text-xl">Free Delivery</h1>
+                <p className="font-light">Free shipping on all orders</p>
+              </div>
             </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
-            <span className="text-6xl bg-blue-300 rounded-lg">
-              <BiSupport />
-            </span>
-            <div>
-              <h1 className="font-bold text-xl">Online Support 24/7</h1>
-              <p className="font-light">Support online 24 hours a day</p>
+            <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
+              <span className="text-6xl bg-blue-300 rounded-lg">
+                <BiSupport />
+              </span>
+              <div>
+                <h1 className="font-bold text-xl">Online Support 24/7</h1>
+                <p className="font-light">Support online 24 hours a day</p>
+              </div>
             </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
-            <span className="text-6xl bg-blue-300 rounded-lg">
-              <RiRefund2Line />
-            </span>
-            <div>
-              <h1 className="font-bold text-xl">Money Return</h1>
-              <p className="font-light">Return guarantee under 3 days</p>
+            <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
+              <span className="text-6xl bg-blue-300 rounded-lg">
+                <RiRefund2Line />
+              </span>
+              <div>
+                <h1 className="font-bold text-xl">Money Return</h1>
+                <p className="font-light">Return guarantee under 3 days</p>
+              </div>
             </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
-            <span className="text-6xl bg-blue-300 rounded-lg">
-              <TbDiscount2 />
-            </span>
-            <div>
-              <h1 className="font-bold text-xl">Member Discount</h1>
-              <p className="font-light">On every order over $100</p>
+            <div className="col-span-2 md:col-span-1 flex justify-center items-center ">
+              <span className="text-6xl bg-blue-300 rounded-lg">
+                <TbDiscount2 />
+              </span>
+              <div>
+                <h1 className="font-bold text-xl">Member Discount</h1>
+                <p className="font-light">On every order over $100</p>
+              </div>
             </div>
           </div>
         </div>
