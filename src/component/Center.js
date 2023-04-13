@@ -169,6 +169,12 @@ export const Center = () => {
           </div>
         </div>
       </div>
+      <div className="grid grid-cols-4 md:w-[90%] mx-auto">
+        <div className="bg-red-500 col-span-1">a</div>
+        <div className="bg-red-600 col-span-1">a</div>
+        <div className="bg-red-700 col-span-1">a</div>
+        <div className="bg-red-800 col-span-1">a</div>
+      </div>
     </div>
   );
 };
