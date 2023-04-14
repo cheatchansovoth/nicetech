@@ -108,9 +108,7 @@ export const Center = () => {
                     alt="product2"
                     className="w-[150px]"
                   ></img>
-                  <p className="font-semibold">
-                    You want to feel a deep connection to your music
-                  </p>
+                  <p className="font-semibold">feel a deep connection</p>
                 </div>
               </div>
             </div>

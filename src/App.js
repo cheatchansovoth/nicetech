@@ -4,6 +4,7 @@ import ThemeContext from "./component/context/ThemeContext";
 import { Center } from "./component/Center";
 import { Cart } from "./component/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Login } from "./component/Login";
 function App() {
   const [isDark, setIsDark] = useState(false);
   return (
@@ -24,6 +25,14 @@ function App() {
                 <>
                   <Center />
                   <Cart />
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <Login />
                 </>
               }
             />

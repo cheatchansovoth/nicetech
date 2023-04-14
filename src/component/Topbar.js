@@ -4,6 +4,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineHeart,
 } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import ThemeContext from "./context/ThemeContext";
@@ -18,8 +19,8 @@ export const Topbar = () => {
       <div
         className={
           isDark
-            ? "flex w-20 h-10 bg-white  rounded-full duration-500 "
-            : "flex w-20 h-10 bg-gray-600 rounded-full duration-500 "
+            ? "flex md:w-20 h-10 bg-white  rounded-full duration-500 "
+            : "flex md:w-20 h-10 bg-gray-600 rounded-full duration-500 "
         }
       >
         <span
@@ -54,7 +55,7 @@ export const Topbar = () => {
         >
           NiceTech
         </h1>
-        <div className="w-[50%] flex justify-center items-center">
+        <div className="w-[50%] hidden md:flex justify-center items-center">
           <input
             type="text"
             className="w-2/3 rounded-full bg-gray-200 py-2 text-black placeholder:text-black placeholder:text-xl "
@@ -68,24 +69,30 @@ export const Topbar = () => {
             </span>
           </button>
         </div>
-        <div className="flex">
+        <div className="hidden md:flex">
           <BsPerson className="text-5xl" />
           <div>
             <p>Sign In</p>
             <p>Account</p>
           </div>
         </div>
-        <div>
-          <span className="text-5xl">
+        <div className="hidden md:block">
+          <span className="text text-5xl">
             <AiOutlineShoppingCart />
           </span>
         </div>
-        <div>
-          <span className="text-5xl">
-            <AiOutlineHeart />
-          </span>
-        </div>
         <div>{switchChange()}</div>
+      </div>
+      <div className="w-[100%] hidden justify-center md:hidden">
+        {/* <span className="text-xl">
+          <GiHamburgerMenu />
+        </span> */}
+        <input
+          type="text"
+          className="w-screen rounded-md bg-gray-200 py-2 text-black placeholder:text-black md:placeholder:text-xl placeholder:text-center "
+          style={{ paddingLeft: "30px" }}
+          placeholder="Search for products"
+        ></input>
       </div>
     </div>
   );
