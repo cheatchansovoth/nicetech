@@ -3,7 +3,7 @@ import { Topbar } from "./component/Topbar";
 import ThemeContext from "./component/context/ThemeContext";
 import { Center } from "./component/Center";
 import { Cart } from "./component/Cart";
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [isDark, setIsDark] = useState(false);
   return (
@@ -15,8 +15,20 @@ function App() {
       }
     >
       <ThemeContext.Provider value={{ isDark, setIsDark }}>
-        <Topbar />
-        <Center />
+        <Router>
+          <Topbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Center />
+                  <Cart />
+                </>
+              }
+            />
+          </Routes>
+        </Router>
       </ThemeContext.Provider>
     </div>
   );

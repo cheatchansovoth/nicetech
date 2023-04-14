@@ -1,79 +1,23 @@
 import React, { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { TbTruckDelivery, TbDiscount2 } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { RiRefund2Line } from "react-icons/ri";
-
+import { Cart } from "./Cart";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export const Center = () => {
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const handleClick = (index) => {
-    setActiveIndex(index);
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
   };
-
-  const isActive = (index) => {
-    return index === activeIndex;
-  };
-
-  const bgStyle = "bg-blue-300 rounded-full duration-150 font-semibold ";
-
   return (
     <div className="w-screen my-5">
       <div className="w-screen md:w-[90%] mx-auto flex">
-        <div className="bg-blue-200 p-5 space-y-5 rounded-2xl hidden xl:block w-[300px] text-black">
-          <div className="flex items-center bg-pink-100 rounded-3xl px-3 py-4">
-            <span>
-              <RxHamburgerMenu />
-            </span>
-            <h1 className="lg:text-md font-bold">Browse Categories</h1>
-          </div>
-          <div className="w-[90%] mx-auto space-y-5 font-light">
-            <div
-              className={`flex justify-between ${
-                isActive(0) ? `${bgStyle}` : ""
-              }`}
-              onClick={() => handleClick(0)}
-            >
-              <p className="mx-3">PC built</p>
-              <span>></span>
-            </div>
-            <div
-              className={`flex justify-between ${
-                isActive(1) ? `${bgStyle}` : ""
-              }`}
-              onClick={() => handleClick(1)}
-            >
-              <p className="mx-3">Rams</p>
-              <span>></span>
-            </div>
-            <div
-              className={`flex justify-between ${
-                isActive(2) ? `${bgStyle}` : ""
-              }`}
-              onClick={() => handleClick(2)}
-            >
-              <p className="mx-3">GPU</p>
-              <span>></span>
-            </div>
-            <div
-              className={`flex justify-between ${
-                isActive(3) ? `${bgStyle}` : ""
-              }`}
-              onClick={() => handleClick(3)}
-            >
-              <p className="mx-3">Monitor</p>
-              <span>></span>
-            </div>
-            <div
-              className={`flex justify-between ${
-                isActive(4) ? `${bgStyle}` : ""
-              }`}
-              onClick={() => handleClick(4)}
-            >
-              <p className="mx-3">Laptop</p>
-              <span>></span>
-            </div>
-          </div>
-        </div>
         <div className="w-[100%] min-h-[480px]">
           <div className="flex md:justify-end space-x-10 text-sm md:text-xl my-5 w-[90%]">
             <p className="font-semibold">Home</p>
@@ -83,44 +27,90 @@ export const Center = () => {
             <p className="text-blue-400 font-semibold">Special Offers</p>
           </div>
           <div>
-            <div className="grid grid-cols-4 grid-rows-2 min-h-[480px] gap-4">
-              <div className="col-span-4 bg-blue-300 row-span-2 md:col-span-3 md:row-span-2 rounded-3xl md:mx-3">
-                <div className="w-[90%] mx-auto items-center justify-center flex h-[100%]">
-                  <div className="w-[45%] space-y-3">
-                    <h1 className="text-xl font-bold md:text-4xl">
-                      Grab upto 50% off on Selected Headphones
-                    </h1>
-                    <button className="bg-blue-400 px-6 rounded-xl font-bold py-2">
-                      Stop Now
-                    </button>
+            <div className="grid grid-cols-4 grid-rows-2 min-h-[480px] gap-4 ">
+              <div className="col-span-4 bg-blue-300 row-span-2 md:col-span-3 md:row-span-2 rounded-3xl ">
+                <Slider {...settings} arrows={false}>
+                  <div>
+                    <div className="w-[90%] mx-auto items-center justify-center flex h-[50vh] ">
+                      <div className="w-[45%] space-y-3">
+                        <h1 className="text-xl font-bold md:text-4xl">
+                          Grab upto 50% off on Selected Headphones
+                        </h1>
+                        <button className="bg-blue-400 px-6 rounded-xl font-bold py-2">
+                          Stop Now
+                        </button>
+                      </div>
+                      <div className="w-[45%]">
+                        <img
+                          src="https://www.apple.com/v/airpods-max/e/images/overview/hero__gnfk5g59t0qe_xlarge.png"
+                          alt="product"
+                          className="w-[200px] md:w-[400px]"
+                        ></img>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-[45%]">
-                    <img
-                      src="https://www.apple.com/v/airpods-max/e/images/overview/hero__gnfk5g59t0qe_xlarge.png"
-                      alt="product"
-                      className="w-[200px] md:w-[400px]"
-                    ></img>
+                  <div>
+                    <div className="w-[90%] mx-auto items-center justify-center flex h-[50vh] ">
+                      <div className="w-[45%] space-y-3">
+                        <h1 className="text-xl font-bold md:text-4xl">
+                          Grab upto 50% off on Selected Headphones
+                        </h1>
+                        <button className="bg-blue-400 px-6 rounded-xl font-bold py-2">
+                          Stop Now
+                        </button>
+                      </div>
+                      <div className="w-[45%]">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0573/2309/4216/products/LosAngeles_SandGold_001_1200x1200.png?v=1650876856"
+                          alt="product"
+                          className="w-[200px] md:w-[420px]"
+                        ></img>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div>
+                    <div className="w-[90%] mx-auto items-center justify-center flex h-[50vh]">
+                      <div className="w-[45%] space-y-3">
+                        <h1 className="text-xl font-bold md:text-4xl">
+                          Grab upto 30% off on Selected MacBook
+                        </h1>
+                        <button className="bg-blue-400 px-6 rounded-xl font-bold py-2">
+                          Stop Now
+                        </button>
+                      </div>
+                      <div className="w-[45%]">
+                        <img
+                          src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=1078&hei=730&fmt=png-alpha&.v=1653084303665"
+                          alt="product"
+                          className="w-[200px] md:w-[620px]"
+                        ></img>
+                      </div>
+                    </div>
+                  </div>
+                </Slider>
               </div>
               <div className="col-span-2 row-span-2 bg-blue-200 md:row-span-1 md:col-span-1 rounded-3xl">
-                <div className="flex flex-col justify-center items-center">
-                  <h1 className="text-xl font-semibold">Audionic Music</h1>
+                <div className="flex flex-col justify-center items-center my-[10%]">
+                  <h1 className="text-2xl font-semibold">Audionic Music</h1>
                   <img
                     src="https://cdn.shopify.com/s/files/1/0573/2309/4216/products/LosAngeles_SandGold_001.png?v=1650876856"
                     alt="product1"
                     className="w-[150px]"
                   ></img>
+                  <p className="font-semibold">More magical than ever</p>
                 </div>
               </div>
               <div className="col-span-2 row-span-2 bg-pink-100 md:row-span-1 md:col-span-1 rounded-3xl">
-                <div className="flex flex-col justify-center items-center">
-                  <h1 className="text-xl font-semibold">Audionic Music</h1>
+                <div className="flex flex-col justify-center items-center my-[10%]">
+                  <h1 className="text-2xl font-semibold">Audionic Music</h1>
                   <img
                     src="https://mm.jbl.com/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0fb18ea9/JBL_JR300BT_Pink_Fold-1605x1605px.png?sw=537&sfrm=png"
                     alt="product2"
                     className="w-[150px]"
                   ></img>
+                  <p className="font-semibold">
+                    You want to feel a deep connection to your music
+                  </p>
                 </div>
               </div>
             </div>
@@ -168,12 +158,6 @@ export const Center = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="grid grid-cols-4 md:w-[90%] mx-auto">
-        <div className="bg-red-500 col-span-1">a</div>
-        <div className="bg-red-600 col-span-1">a</div>
-        <div className="bg-red-700 col-span-1">a</div>
-        <div className="bg-red-800 col-span-1">a</div>
       </div>
     </div>
   );

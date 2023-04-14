@@ -7,6 +7,7 @@ import {
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import ThemeContext from "./context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 export const Topbar = () => {
   const { isDark, setIsDark } = useContext(ThemeContext);
   const handleOnClick = () => {
@@ -38,10 +39,21 @@ export const Topbar = () => {
       </div>
     );
   }
+  const navigate = useNavigate();
+  const handleChangePage = (route) => {
+    navigate(route);
+  };
   return (
     <div className="w-screen">
       <div className="w-[90%] mx-auto py-3 flex justify-between">
-        <h1 className="text-4xl font-bold font-sans">NiceTech</h1>
+        <h1
+          className="text-4xl font-bold font-sans"
+          onClick={() => {
+            handleChangePage("/");
+          }}
+        >
+          NiceTech
+        </h1>
         <div className="w-[50%] flex justify-center items-center">
           <input
             type="text"
