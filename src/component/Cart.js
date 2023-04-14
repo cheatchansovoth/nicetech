@@ -48,42 +48,17 @@ export const Cart = () => {
         <select
           name="sort"
           className="bg-gray-500 font-bold rounded-2xl px-2 w-[100%]"
+          value={activeIndex}
+          onChange={(event) => {
+            const index = parseInt(event.target.value);
+            handleClick(index);
+          }}
         >
-          <option
-            onClick={() => {
-              handleClick(0);
-            }}
-          >
-            PC Built
-          </option>
-          <option
-            onClick={() => {
-              handleClick(1);
-            }}
-          >
-            Rams
-          </option>
-          <option
-            onClick={() => {
-              handleClick(2);
-            }}
-          >
-            GPU
-          </option>
-          <option
-            onClick={() => {
-              handleClick(3);
-            }}
-          >
-            Monitor
-          </option>
-          <option
-            onClick={() => {
-              handleClick(4);
-            }}
-          >
-            Laptop
-          </option>
+          <option value={0}>PC Built</option>
+          <option value={1}>Rams</option>
+          <option value={2}>GPU</option>
+          <option value={3}>Monitor</option>
+          <option value={4}>Laptop</option>
         </select>
       </div>
       <div className="flex w-[90%] mx-auto">
