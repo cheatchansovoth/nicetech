@@ -1,49 +1,25 @@
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
-export const Login = () => {
+
+export const Resetpassword = () => {
   return (
     <div className="w-screen md:w-[90%] mx-auto">
       <div className="grid grid-cols-4 grid-rows-2 gap-4 ">
         <div className="col-span-4 md:col-span-3 row-span-2 bg-blue-400 rounded-xl">
           <div className="w-[100%] flex flex-col items-center justify-center min-h-[50vh]">
             <div>
-              <h1 className="text-5xl font-bold">LOG IN</h1>
+              <h1 className="text-5xl font-bold">Reset Password</h1>
               <p className="font-semibold">
                 Welcome back! Please enter your details
               </p>
-              <div className="w-[100%] flex item-center items-center bg-white justify-center p-1 rounded-md shadow-black shadow-md">
-                <span className="text-4xl">
-                  <FcGoogle />
-                </span>
-                <button className="text-black text-xl font-semibold">
-                  Log in with Google
-                </button>
-              </div>
-              <div className="flex items-center my-3">
-                <hr className="border-gray-400 border-1 w-full mr-4" />
-                <span className="font-bold text-gray-600">OR</span>
-                <hr className="border-gray-400 border-1 w-full ml-4" />
-              </div>
               <form className="flex flex-col space-y-3">
                 <input
                   className="p-2 placeholder:font-bold rounded-md"
-                  placeholder="Username"
+                  placeholder="Email"
                 ></input>
-                <input
-                  className=" p-2 placeholder:font-bold rounded-md"
-                  placeholder="Password"
-                ></input>
-                <p className="text-end text-blue-700 font-bold">
-                  Forget Password
-                </p>
                 <button className="bg-blue-600 rounded-md px-6 py-2 hover:bg-blue-500">
-                  Sign in
+                  Submit
                 </button>
               </form>
-              <div className="flex justify-between">
-                <p className="font-bold">Don't have An account ?</p>
-                <span className="text-blue-700 font-bold">Sign up here</span>
-              </div>
             </div>
           </div>
         </div>

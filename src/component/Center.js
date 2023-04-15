@@ -17,6 +17,17 @@ export const Center = () => {
   };
   return (
     <div className="w-screen my-5">
+      <div className="w-[90%] justify-center md:hidden mx-auto">
+        {/* <span className="text-xl">
+          <GiHamburgerMenu />
+        </span> */}
+        <input
+          type="text"
+          className="w-[100%] rounded-md bg-gray-200 py-2 text-black placeholder:text-black md:placeholder:text-xl placeholder:text-center"
+          style={{ paddingLeft: "30px" }}
+          placeholder="Search for products"
+        ></input>
+      </div>
       <div className="w-screen md:w-[90%] mx-auto flex">
         <div className="w-[100%] min-h-[480px]">
           <div className="flex md:justify-end space-x-10 text-sm md:text-xl my-5 w-[90%]">

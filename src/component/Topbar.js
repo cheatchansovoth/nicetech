@@ -9,10 +9,16 @@ import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import ThemeContext from "./context/ThemeContext";
 import { useNavigate } from "react-router-dom";
+import { ShoppingCart } from "./ShoppingCart";
 export const Topbar = () => {
   const { isDark, setIsDark } = useContext(ThemeContext);
   const handleOnClick = () => {
     setIsDark(!isDark);
+  };
+  const [iseCartDisplay, setIsCartDisplay] = useState(false);
+
+  const handleCartDisplay = () => {
+    setIsCartDisplay(!iseCartDisplay);
   };
   function switchChange() {
     return (
@@ -48,7 +54,7 @@ export const Topbar = () => {
     <div className="w-screen">
       <div className="w-[90%] mx-auto py-3 flex justify-between">
         <h1
-          className="text-4xl font-bold font-sans"
+          className="text-4xl font-bold font-sans cursor-pointer"
           onClick={() => {
             handleChangePage("/");
           }}
@@ -69,15 +75,32 @@ export const Topbar = () => {
             </span>
           </button>
         </div>
-        <div className="hidden md:flex">
+        <div
+          className="hidden md:flex cursor-pointer"
+          onClick={() => handleChangePage("/login")}
+        >
           <BsPerson className="text-5xl" />
           <div>
             <p>Sign In</p>
             <p>Account</p>
           </div>
         </div>
-        <div className="hidden md:block">
-          <span className="text text-5xl">
+        <div
+          className=" md:flex md:hidden cursor-pointer"
+          onClick={() => handleChangePage("/login")}
+        >
+          <BsPerson className="text-5xl" />
+        </div>
+        <div className="md:block">
+          <span
+            className="text-5xl hidden md:block md:text-5xl cursor-pointer"
+            onClick={handleCartDisplay}
+          >
+            <AiOutlineShoppingCart />
+          </span>
+        </div>
+        <div className="md:block">
+          <span className="text-5xl  md:hidden md:text-5xl cursor-pointer">
             <AiOutlineShoppingCart />
           </span>
         </div>
@@ -94,6 +117,7 @@ export const Topbar = () => {
           placeholder="Search for products"
         ></input>
       </div>
+      {iseCartDisplay && <ShoppingCart />}
     </div>
   );
 };

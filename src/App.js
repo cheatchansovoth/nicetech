@@ -5,6 +5,8 @@ import { Center } from "./component/Center";
 import { Cart } from "./component/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Login } from "./component/Login";
+import { Register } from "./component/Register";
+import { Resetpassword } from "./component/Resetpassword";
 function App() {
   const [isDark, setIsDark] = useState(false);
   return (
@@ -33,6 +35,22 @@ function App() {
               element={
                 <>
                   <Login />
+                </>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <>
+                  <Register />
+                </>
+              }
+            />
+            <Route
+              path="/resetpassword"
+              element={
+                <>
+                  <Resetpassword />
                 </>
               }
             />
