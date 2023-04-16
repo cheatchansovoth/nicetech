@@ -1,6 +1,18 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { auth, GoogleAuth } from "./Authentication/Firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
 export const Resetpassword = () => {
+  const [resetPassword, setResetPassword] = useState("");
+  const handleResetPassword = (event) => {
+    event.preventDefault();
+    sendPasswordResetEmail(auth, resetPassword)
+      .then(() => {
+        alert("Password reset link has been sent to your email");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   return (
     <div className="w-screen md:w-[90%] mx-auto">
       <div className="grid grid-cols-4 grid-rows-2 gap-4 ">
@@ -11,12 +23,21 @@ export const Resetpassword = () => {
               <p className="font-semibold">
                 Welcome back! Please enter your details
               </p>
-              <form className="flex flex-col space-y-3">
+              <form
+                className="flex flex-col space-y-3"
+                onSubmit={handleResetPassword}
+              >
                 <input
                   className="p-2 placeholder:font-bold rounded-md"
                   placeholder="Email"
+                  onChange={(event) => {
+                    setResetPassword(event.target.value);
+                  }}
                 ></input>
-                <button className="bg-blue-600 rounded-md px-6 py-2 hover:bg-blue-500">
+                <button
+                  className="bg-blue-600 rounded-md px-6 py-2 hover:bg-blue-500"
+                  type="submit"
+                >
                   Submit
                 </button>
               </form>

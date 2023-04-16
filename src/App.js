@@ -9,6 +9,8 @@ import { Register } from "./component/Register";
 import { Resetpassword } from "./component/Resetpassword";
 function App() {
   const [isDark, setIsDark] = useState(false);
+  const [user, setUser] = useState([]);
+  const [isLoggin, setIsLoggin] = useState(false);
   return (
     <div
       className={
@@ -17,7 +19,9 @@ function App() {
           : "bg-white min-h-screen text-black duration-500"
       }
     >
-      <ThemeContext.Provider value={{ isDark, setIsDark }}>
+      <ThemeContext.Provider
+        value={{ isDark, setIsDark, user, setUser, isLoggin, setIsLoggin }}
+      >
         <Router>
           <Topbar />
           <Routes>

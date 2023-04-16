@@ -1,6 +1,55 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+import { auth, GoogleAuth } from "./Authentication/Firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import ThemeContext from "./context/ThemeContext";
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const { setUser, isLoggin, setIsLoggin, user } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return unsubscribe;
+  }, []);
+  useEffect(() => {
+    if (isLoggin) {
+      navigate("/");
+    }
+  }, [isLoggin]);
+  const SignIn = async (event) => {
+    event.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
+      console.log(user);
+      if (user) {
+      }
+    } catch (err) {
+      setError("Invalid Credentials");
+    }
+  };
+  const SignInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, GoogleAuth);
+      const user = auth.currentUser;
+      if (user) {
+        setUser(user);
+        setIsLoggin(true);
+        navigate("/");
+      }
+    } catch (err) {
+      setError("Invalid Credentials");
+    }
+  };
+  const handleChangePage = (route) => {
+    navigate(route);
+  };
   return (
     <div className="w-screen md:w-[90%] mx-auto">
       <div className="grid grid-cols-4 grid-rows-2 gap-4 ">
@@ -15,7 +64,10 @@ export const Login = () => {
                 <span className="text-4xl">
                   <FcGoogle />
                 </span>
-                <button className="text-black text-xl font-semibold">
+                <button
+                  className="text-black text-xl font-semibold"
+                  onClick={SignInWithGoogle}
+                >
                   Log in with Google
                 </button>
               </div>
@@ -26,24 +78,42 @@ export const Login = () => {
               </div>
               <form className="flex flex-col space-y-3">
                 <input
-                  className="p-2 placeholder:font-bold rounded-md"
+                  className="p-2 placeholder:font-bold rounded-md text-black"
                   placeholder="Username"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
                 ></input>
                 <input
-                  className=" p-2 placeholder:font-bold rounded-md"
+                  className=" p-2 placeholder:font-bold rounded-md text-black"
                   placeholder="Password"
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
                 ></input>
-                <p className="text-end text-blue-700 font-bold">
+                <p
+                  className="text-end text-blue-700 font-bold cursor-pointer"
+                  onClick={() => handleChangePage("/resetpassword")}
+                >
                   Forget Password
                 </p>
-                <button className="bg-blue-600 rounded-md px-6 py-2 hover:bg-blue-500">
+                <button
+                  className="bg-blue-600 rounded-md px-6 py-2 hover:bg-blue-500"
+                  onClick={SignIn}
+                >
                   Sign in
                 </button>
               </form>
               <div className="flex justify-between">
                 <p className="font-bold">Don't have An account ?</p>
-                <span className="text-blue-700 font-bold">Sign up here</span>
+                <span
+                  className="text-blue-700 font-bold cursor-pointer"
+                  onClick={() => handleChangePage("/register")}
+                >
+                  Sign up here
+                </span>
               </div>
+              {error && <p className="text-red-500 font-semibold">{error}</p>}
             </div>
           </div>
         </div>

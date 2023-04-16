@@ -10,6 +10,8 @@ import { BsPerson } from "react-icons/bs";
 import ThemeContext from "./context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { ShoppingCart } from "./ShoppingCart";
+import { auth, GoogleAuth } from "./Authentication/Firebase";
+
 export const Topbar = () => {
   const { isDark, setIsDark } = useContext(ThemeContext);
   const handleOnClick = () => {
@@ -20,6 +22,7 @@ export const Topbar = () => {
   const handleCartDisplay = () => {
     setIsCartDisplay(!iseCartDisplay);
   };
+  const { user, setUser, setIsLoggin } = useContext(ThemeContext);
   function switchChange() {
     return (
       <div
@@ -75,16 +78,35 @@ export const Topbar = () => {
             </span>
           </button>
         </div>
-        <div
-          className="hidden md:flex cursor-pointer"
-          onClick={() => handleChangePage("/login")}
-        >
-          <BsPerson className="text-5xl" />
-          <div>
-            <p>Sign In</p>
-            <p>Account</p>
+        {user && user.displayName ? (
+          <div className="hidden md:flex cursor-pointer">
+            <BsPerson className="text-5xl" />
+            <div>
+              <span>{user.displayName}</span>
+              <p
+                onClick={() => {
+                  setUser("");
+                  setIsLoggin(false);
+                  auth.signOut();
+                }}
+              >
+                SignOut
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            className="hidden md:flex cursor-pointer"
+            onClick={() => handleChangePage("/login")}
+          >
+            <BsPerson className="text-5xl" />
+            <div>
+              <p>Sign In</p>
+              <p>Account</p>
+            </div>
+          </div>
+        )}
+
         <div
           className=" md:flex md:hidden cursor-pointer"
           onClick={() => handleChangePage("/login")}
