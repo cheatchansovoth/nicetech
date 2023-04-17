@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ThemeContext from "./context/ThemeContext";
 import { Alert } from "./Alert";
-
+import Axios from "axios";
 export const CheckoutCart = ({ Product }) => {
   const TotalPrice = Product.reduce((total, item) => total + item.price, 0);
   const [alert, setAlert] = useState(false);
@@ -14,6 +14,28 @@ export const CheckoutCart = ({ Product }) => {
       setAlert(false);
     }, 2000);
   };
+  const handleCheckout = async () => {
+    const api1 = "http://localhost:5000/create-checkout-session";
+    const api2 = "https://nicetech.onrender.com/create-checkout-session";
+    const data = { Product: Product };
+
+    try {
+      const response1 = await Axios.post(api1, { data });
+      window.location.href = response1.data.url;
+    } catch (error1) {
+      console.log(`Error sending POST request to ${api1}: ${error1}`);
+      try {
+        const response2 = await Axios.post(api2, { data });
+        window.location.href = response2.data.url;
+      } catch (error2) {
+        console.log(`Error sending POST request to ${api2}: ${error2}`);
+        alert(
+          "Sorry, something went wrong with the checkout. Please try again later."
+        );
+      }
+    }
+  };
+
   return (
     <div>
       <div>{alert && <Alert show={false} />}</div>
@@ -70,6 +92,12 @@ export const CheckoutCart = ({ Product }) => {
             <h1>GST: 5%</h1>
             <h1>Total Cost: {TotalPrice + 5 * 0.05}</h1>
           </div>
+          <button
+            className="bg-blue-500 p-2 rounded-xl"
+            onClick={handleCheckout}
+          >
+            Check Out
+          </button>
         </table>
       </div>
     </div>
