@@ -11,9 +11,10 @@ import ThemeContext from "./context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 import { ShoppingCart } from "./ShoppingCart";
 import { auth, GoogleAuth } from "./Authentication/Firebase";
+import { Alert } from "./Alert";
 
 export const Topbar = () => {
-  const { isDark, setIsDark } = useContext(ThemeContext);
+  const { isDark, setIsDark, storeCart } = useContext(ThemeContext);
   const handleOnClick = () => {
     setIsDark(!isDark);
   };
@@ -23,6 +24,7 @@ export const Topbar = () => {
     setIsCartDisplay(!iseCartDisplay);
   };
   const { user, setUser, setIsLoggin } = useContext(ThemeContext);
+  console.log(user);
   function switchChange() {
     return (
       <div
@@ -54,7 +56,7 @@ export const Topbar = () => {
     navigate(route);
   };
   return (
-    <div className="w-screen">
+    <div className="w-screen ">
       <div className="w-[90%] mx-auto py-3 flex justify-between">
         <h1
           className="text-4xl font-bold font-sans cursor-pointer"
@@ -106,20 +108,24 @@ export const Topbar = () => {
             </div>
           </div>
         )}
-
         <div
           className=" md:flex md:hidden cursor-pointer"
           onClick={() => handleChangePage("/login")}
         >
           <BsPerson className="text-5xl" />
         </div>
-        <div className="md:block">
+        <div className="md:flex">
           <span
             className="text-5xl hidden md:block md:text-5xl cursor-pointer"
-            onClick={handleCartDisplay}
+            onClick={() => handleChangePage("/checkout")}
           >
             <AiOutlineShoppingCart />
           </span>
+          {storeCart.length > 0 && (
+            <span className="text-blue-200 font-bold text-md">
+              {storeCart.length}
+            </span>
+          )}
         </div>
         <div className="md:block">
           <span className="text-5xl  md:hidden md:text-5xl cursor-pointer">

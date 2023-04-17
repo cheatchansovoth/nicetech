@@ -17,18 +17,22 @@ export const Login = () => {
     });
     return unsubscribe;
   }, []);
-  useEffect(() => {
-    if (isLoggin) {
-      navigate("/");
-    }
-  }, [isLoggin]);
+  // useEffect(() => {
+  //   console.log(user);
+  //   if (user && isLoggin) {
+  //     navigate("/");
+  //   }
+  // }, [isLoggin]);
   const SignIn = async (event) => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      console.log(user);
       if (user) {
+        setUser(user);
+        setIsLoggin(true);
+        user.displayName = "Unknown";
+        navigate("/");
       }
     } catch (err) {
       setError("Invalid Credentials");
@@ -86,6 +90,7 @@ export const Login = () => {
                 ></input>
                 <input
                   className=" p-2 placeholder:font-bold rounded-md text-black"
+                  type="password"
                   placeholder="Password"
                   onChange={(event) => {
                     setPassword(event.target.value);

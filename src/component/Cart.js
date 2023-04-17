@@ -1,11 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import Data from "./files/Data.json";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import ThemeContext from "./context/ThemeContext";
+import { Alert } from "./Alert";
 
 export const Cart = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [type, setType] = useState("");
+  const [alert, setAlert] = useState(false);
   const handleClick = (index) => {
     setActiveIndex(index);
     if (index === 0) {
@@ -31,10 +34,19 @@ export const Cart = () => {
   const handleSlice = () => {
     setSlice(slice + 12);
   };
+  const { handleCart } = useContext(ThemeContext);
 
+  const addCart = (item) => {
+    setAlert(true);
+    handleCart(item);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+  };
   const bgStyle = "bg-blue-300 rounded-full duration-150 font-semibold ";
   return (
     <div>
+      {alert && <Alert show={true} />}
       <div className="flex justify-between w-[80%] mx-auto my-5">
         <h1 className="text-xl md:text-3xl font-bold uppercase underline">
           Our Top Products
@@ -131,7 +143,7 @@ export const Cart = () => {
                   />
                   <div className="flex space-x-5">
                     <h1 className="font-semibold">{item.model}</h1>
-                    <h1 className="text-red-700 ">{item.price}</h1>
+                    <h1 className="text-red-700 ">$ {item.price}</h1>
                   </div>
                   {item.processor && (
                     <p>
@@ -156,7 +168,10 @@ export const Cart = () => {
                       {item.capacity} {item.speed}
                     </p>
                   )}
-                  <button className="bg-blue-500 w-[100%] rounded-full p-3 hover:bg-gray-500 duration-300 ease-in font-semibold">
+                  <button
+                    className="bg-blue-500 w-[100%] rounded-full p-3 hover:bg-gray-500 duration-300 ease-in font-semibold"
+                    onClick={() => addCart(item)}
+                  >
                     Add to Cart
                   </button>
                 </div>

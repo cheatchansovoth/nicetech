@@ -7,10 +7,22 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Login } from "./component/Login";
 import { Register } from "./component/Register";
 import { Resetpassword } from "./component/Resetpassword";
+import { CheckoutCart } from "./component/CheckoutCart";
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [user, setUser] = useState([]);
   const [isLoggin, setIsLoggin] = useState(false);
+  const [storeCart, setStoreCart] = useState([]);
+
+  const handleCart = (product) => {
+    const cartID = Date.now().toString();
+    const item = { ...product, cartID };
+    setStoreCart([...storeCart, item]);
+  };
+  const removeCart = (id) => {
+    const newCart = storeCart.filter((item) => item.cartID !== id);
+    setStoreCart(newCart);
+  };
   return (
     <div
       className={
@@ -20,7 +32,17 @@ function App() {
       }
     >
       <ThemeContext.Provider
-        value={{ isDark, setIsDark, user, setUser, isLoggin, setIsLoggin }}
+        value={{
+          isDark,
+          setIsDark,
+          user,
+          setUser,
+          isLoggin,
+          setIsLoggin,
+          storeCart,
+          handleCart,
+          removeCart,
+        }}
       >
         <Router>
           <Topbar />
@@ -55,6 +77,14 @@ function App() {
               element={
                 <>
                   <Resetpassword />
+                </>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <>
+                  <CheckoutCart Product={storeCart} />
                 </>
               }
             />

@@ -49,7 +49,10 @@ export const Register = () => {
                 <span className="font-bold text-gray-600">OR</span>
                 <hr className="border-gray-400 border-1 w-full ml-4" />
               </div>
-              <form className="flex flex-col space-y-3" onSubmit={SignUp}>
+              <form
+                className="flex flex-col space-y-3 text-black"
+                onSubmit={SignUp}
+              >
                 <input
                   className="p-2 placeholder:font-bold rounded-md"
                   placeholder="Username"
@@ -66,6 +69,7 @@ export const Register = () => {
                 ></input>
                 <input
                   className=" p-2 placeholder:font-bold rounded-md"
+                  type="password"
                   placeholder="Password"
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -73,6 +77,7 @@ export const Register = () => {
                 ></input>
                 <input
                   className=" p-2 placeholder:font-bold rounded-md"
+                  type="password"
                   placeholder="Confirm Password"
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
