@@ -14,10 +14,11 @@ export const CheckoutCart = ({ Product }) => {
       setAlert(false);
     }, 2000);
   };
+  const { user } = useContext(ThemeContext);
   const handleCheckout = async () => {
     const api1 = "http://localhost:5000/create-checkout-session";
     const api2 = "https://nicetech.onrender.com/create-checkout-session";
-    const data = { Product: Product };
+    const data = { Product: Product, user: user };
 
     try {
       const response1 = await Axios.post(api1, { data });

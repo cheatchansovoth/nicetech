@@ -8,6 +8,7 @@ import { Login } from "./component/Login";
 import { Register } from "./component/Register";
 import { Resetpassword } from "./component/Resetpassword";
 import { CheckoutCart } from "./component/CheckoutCart";
+import { ViewItem } from "./component/ViewItem";
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [user, setUser] = useState([]);
@@ -85,6 +86,22 @@ function App() {
               element={
                 <>
                   <CheckoutCart Product={storeCart} />
+                </>
+              }
+            />
+            <Route
+              path="/viewitem"
+              element={
+                <>
+                  <ViewItem />
+                </>
+              }
+            />
+            <Route
+              path="/viewitem/:id"
+              element={
+                <>
+                  <ViewItem />
                 </>
               }
             />
