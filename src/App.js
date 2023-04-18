@@ -9,6 +9,7 @@ import { Register } from "./component/Register";
 import { Resetpassword } from "./component/Resetpassword";
 import { CheckoutCart } from "./component/CheckoutCart";
 import { ViewItem } from "./component/ViewItem";
+import { Dashboard } from "./component/Dashboard";
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [user, setUser] = useState([]);
@@ -102,6 +103,14 @@ function App() {
               element={
                 <>
                   <ViewItem />
+                </>
+              }
+            />
+            <Route
+              path="admin/dashboard/purchaseorder"
+              element={
+                <>
+                  <Dashboard />
                 </>
               }
             />

@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  Suspense,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import ThemeContext from "./context/ThemeContext";
@@ -10,12 +16,20 @@ export const Cart = () => {
   const [type, setType] = useState("");
   const [alert, setAlert] = useState(false);
   const [data, setData] = useState([]);
+  const [requestTime, setRequestTime] = useState(true);
 
   useEffect(() => {
+    setRequestTime(true);
     axios
       .get("https://nicetech.onrender.com/product/getProduct")
       .then((res) => {
-        setData(res.data);
+        try {
+          setData(res.data);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setRequestTime(false);
+        }
       });
   }, []);
 
@@ -143,52 +157,60 @@ export const Cart = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-[90%] mx-auto gap-10 xl:w-[80%] my-5">
-          {useType.slice(0, slice).map((item, key) => {
-            return (
-              <>
-                <div className="flex flex-col xl:w-[70%] space-y-3">
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-[100%] rounded-3xl "
-                  />
-                  <div className="flex space-x-5">
-                    <h1 className="font-semibold">{item.model}</h1>
-                    <h1 className="text-red-700 ">$ {item.price}</h1>
+          <Suspense fallback={<div>Loading...</div>}>
+            {useType.slice(0, slice).map((item, key) => {
+              return (
+                <>
+                  <div className="flex flex-col xl:w-[70%] space-y-3">
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-[100%] rounded-3xl "
+                    />
+                    <div className="flex space-x-5">
+                      <h1 className="font-semibold">{item.model}</h1>
+                      <h1 className="text-red-700 ">$ {item.price}</h1>
+                    </div>
+                    {item.processor && (
+                      <p>
+                        <span className="font-semibold">Processor</span>:{" "}
+                        {item.processor}
+                      </p>
+                    )}
+                    {item.memory && (
+                      <p>
+                        <span className="font-semibold">Memory</span>:{" "}
+                        {item.memory}
+                      </p>
+                    )}
+                    {item.brand && (
+                      <p>
+                        <span className="font-semibold">Brand</span>:{" "}
+                        {item.brand}
+                      </p>
+                    )}
+                    {item.capacity && (
+                      <p>
+                        <span className="font-semibold">Capacity</span>:{" "}
+                        {item.capacity} {item.speed}
+                      </p>
+                    )}
+                    <button
+                      className="bg-blue-500 w-[100%] rounded-full p-3 hover:bg-gray-500 duration-300 ease-in font-semibold"
+                      onClick={() => addCart(item)}
+                    >
+                      Add to Cart
+                    </button>
                   </div>
-                  {item.processor && (
-                    <p>
-                      <span className="font-semibold">Processor</span>:{" "}
-                      {item.processor}
-                    </p>
-                  )}
-                  {item.memory && (
-                    <p>
-                      <span className="font-semibold">Memory</span>:{" "}
-                      {item.memory}
-                    </p>
-                  )}
-                  {item.brand && (
-                    <p>
-                      <span className="font-semibold">Brand</span>: {item.brand}
-                    </p>
-                  )}
-                  {item.capacity && (
-                    <p>
-                      <span className="font-semibold">Capacity</span>:{" "}
-                      {item.capacity} {item.speed}
-                    </p>
-                  )}
-                  <button
-                    className="bg-blue-500 w-[100%] rounded-full p-3 hover:bg-gray-500 duration-300 ease-in font-semibold"
-                    onClick={() => addCart(item)}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </>
-            );
-          })}
+                </>
+              );
+            })}
+            {requestTime ? (
+              <div className="text-2xl ">
+                <p className="text-center">Request the data from backend..</p>
+              </div>
+            ) : null}
+          </Suspense>
         </div>
       </div>
       <div className="w-[100%] flex justify-center">

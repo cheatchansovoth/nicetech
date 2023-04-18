@@ -2,12 +2,14 @@ import React, { Suspense, useContext, useState } from "react";
 import ThemeContext from "./context/ThemeContext";
 import { Alert } from "./Alert";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const CheckoutCart = ({ Product }) => {
   const TotalPrice = Product.reduce((total, item) => total + item.price, 0);
+  const TotalIncludeGST = TotalPrice + 5 * 0.05;
   const [alert, setAlert] = useState(false);
   const { removeCart } = useContext(ThemeContext);
   const [showLoading, setShowLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleRemoveProduct = (item) => {
     setAlert(true);
     removeCart(item);
@@ -16,10 +18,14 @@ export const CheckoutCart = ({ Product }) => {
     }, 2000);
   };
   const { user } = useContext(ThemeContext);
+
   const handleCheckout = async () => {
+    if (user.length <= 0) {
+      return navigate("/login");
+    }
     const api1 = "http://localhost:5000/create-checkout-session";
     const api2 = "https://nicetech.onrender.com/create-checkout-session";
-    const data = { Product: Product, user: user };
+    const data = { Product: Product, user: user, total: TotalIncludeGST };
 
     try {
       setShowLoading(true); // show loading message before making the API request
@@ -95,7 +101,7 @@ export const CheckoutCart = ({ Product }) => {
           <div className="">
             <h1>Shipping : $5</h1>
             <h1>GST: 5%</h1>
-            <h1>Total Cost: {TotalPrice + 5 * 0.05}</h1>
+            <h1>Total Cost: {TotalIncludeGST}</h1>
           </div>
           <button
             className="bg-blue-500 p-2 rounded-xl"
