@@ -7,7 +7,7 @@ export const ViewItem = () => {
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
-    const fetchData = axios
+    axios
       .get("https://nicetech.onrender.com/product/getProduct")
       .then((res) => {
         setData(res.data);

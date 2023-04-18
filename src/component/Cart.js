@@ -1,14 +1,22 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import Data from "./files/Data.json";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import ThemeContext from "./context/ThemeContext";
 import { Alert } from "./Alert";
+import axios from "axios";
 
 export const Cart = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [type, setType] = useState("");
   const [alert, setAlert] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://nicetech.onrender.com/product/getProduct")
+      .then((res) => {
+        setData(res.data);
+      });
+  }, []);
   const handleClick = (index) => {
     setActiveIndex(index);
     if (index === 0) {
@@ -27,8 +35,8 @@ export const Cart = () => {
     return index === activeIndex;
   };
   const useType = useMemo(() => {
-    return type ? Data.filter((item) => item.type === type) : Data;
-  }, [Data, type]);
+    return type ? data.filter((item) => item.type === type) : data;
+  }, [data, type]);
   const [slice, setSlice] = useState(12);
 
   const handleSlice = () => {
@@ -44,6 +52,7 @@ export const Cart = () => {
     }, 2000);
   };
   const bgStyle = "bg-blue-300 rounded-full duration-150 font-semibold ";
+
   return (
     <div>
       {alert && <Alert show={true} />}
