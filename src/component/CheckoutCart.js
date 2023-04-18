@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { Suspense, useContext, useState } from "react";
 import ThemeContext from "./context/ThemeContext";
 import { Alert } from "./Alert";
 import Axios from "axios";
@@ -6,6 +6,7 @@ export const CheckoutCart = ({ Product }) => {
   const TotalPrice = Product.reduce((total, item) => total + item.price, 0);
   const [alert, setAlert] = useState(false);
   const { removeCart } = useContext(ThemeContext);
+  const [showLoading, setShowLoading] = useState(false);
 
   const handleRemoveProduct = (item) => {
     setAlert(true);
@@ -21,6 +22,7 @@ export const CheckoutCart = ({ Product }) => {
     const data = { Product: Product, user: user };
 
     try {
+      setShowLoading(true); // show loading message before making the API request
       const response1 = await Axios.post(api1, { data });
       window.location.href = response1.data.url;
     } catch (error1) {
@@ -34,6 +36,8 @@ export const CheckoutCart = ({ Product }) => {
           "Sorry, something went wrong with the checkout. Please try again later."
         );
       }
+    } finally {
+      setShowLoading(false); // hide loading message after the API request is done (whether successful or not)
     }
   };
 
@@ -99,6 +103,9 @@ export const CheckoutCart = ({ Product }) => {
           >
             Check Out
           </button>
+          <Suspense fallback={<div>Loading...</div>}>
+            {showLoading ? <div>Processing the payment</div> : null}
+          </Suspense>
         </table>
       </div>
     </div>

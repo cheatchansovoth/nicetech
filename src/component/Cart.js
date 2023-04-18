@@ -10,6 +10,7 @@ export const Cart = () => {
   const [type, setType] = useState("");
   const [alert, setAlert] = useState(false);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://nicetech.onrender.com/product/getProduct")
@@ -17,6 +18,7 @@ export const Cart = () => {
         setData(res.data);
       });
   }, []);
+
   const handleClick = (index) => {
     setActiveIndex(index);
     if (index === 0) {
@@ -24,7 +26,7 @@ export const Cart = () => {
     } else if (index === 1) {
       setType("ram");
     } else if (index === 2) {
-      setType("gpu");
+      setType("GPU");
     } else if (index === 3) {
       setType("monitor");
     } else if (index === 4) {
