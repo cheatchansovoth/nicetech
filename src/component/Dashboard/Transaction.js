@@ -1,25 +1,27 @@
 import React, { Suspense, useEffect, useState } from "react";
 import axios from "axios";
-export const Dashboard = () => {
+export const Transaction = () => {
   const [purchaseOrder, setPurchaseOrder] = useState([]);
   const [setTimeout, setSetTimeout] = useState(false);
   useEffect(() => {
-    axios.get("http://localhost:5000/product/getProductOrder").then((res) => {
-      try {
-        setSetTimeout(true);
-        setPurchaseOrder(res.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setSetTimeout(false);
-      }
-    });
+    axios
+      .get("https://nicetech.onrender.com/product/getProductOrder")
+      .then((res) => {
+        try {
+          setSetTimeout(true);
+          setPurchaseOrder(res.data);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setSetTimeout(false);
+        }
+      });
   }, []);
   return (
     <div className="w-[100%]">
       <div className="text-2xl font-bold text-center">Order Table</div>
-      <div className="w-[80%] mx-auto">
-        <table class="border-separate  border border-slate-500 w-[100%]">
+      <div className="">
+        <table class="border-separate border border-slate-500 w-[100%]">
           <thead>
             <tr>
               <th class="border border-slate-600 ">OrderID</th>
@@ -33,9 +35,10 @@ export const Dashboard = () => {
             {purchaseOrder.map((item, key) => {
               const date = new Date(item.date);
               const formattedDate = date.toLocaleString("en-GB");
+              const total = item.total || 0;
               return (
                 <>
-                  <tr>
+                  <tr className="">
                     <td class="border border-slate-700 ...">
                       <div>
                         <span className="font-semibold">{item._id}</span>
@@ -57,7 +60,7 @@ export const Dashboard = () => {
                       )}
                     </td>
                     <td class="border border-slate-700 font-semibold">
-                      ${item.total}
+                      {total.toFixed(2)}
                     </td>
                   </tr>
                 </>
