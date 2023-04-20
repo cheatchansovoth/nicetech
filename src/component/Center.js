@@ -42,7 +42,7 @@ export const Center = () => {
               <div className="col-span-4 bg-blue-300 row-span-2 md:col-span-3 md:row-span-2 rounded-3xl ">
                 <Slider {...settings} arrows={false}>
                   <div>
-                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[70vh] xl:min-h-[50vh]">
+                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[30vh] md:min-h-[70vh] xl:min-h-[50vh]">
                       <div className="w-[45%] space-y-3">
                         <h1 className="text-xl font-bold md:text-4xl">
                           Grab upto 50% off on Selected Headphones
@@ -61,7 +61,7 @@ export const Center = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[70vh] xl:min-h-[50vh] ">
+                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[30vh] md:min-h-[70vh] xl:min-h-[50vh] ">
                       <div className="w-[45%] space-y-3">
                         <h1 className="text-xl font-bold md:text-4xl">
                           Grab upto 50% off on Selected Headphones
@@ -80,7 +80,7 @@ export const Center = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[70vh] xl:min-h-[50vh]">
+                    <div className="w-[90%] mx-auto items-center justify-center flex min-h-[30vh] md:min-h-[70vh] xl:min-h-[50vh]">
                       <div className="w-[45%] space-y-3">
                         <h1 className="text-xl font-bold md:text-4xl">
                           Grab upto 30% off on Selected MacBook
