@@ -207,7 +207,7 @@ export const Cart = () => {
             })}
             {requestTime ? (
               <div className="text-2xl ">
-                <p className="text-center">Request the data from backend..</p>
+                <p className="text-center">Fetching data...</p>
               </div>
             ) : null}
           </Suspense>
