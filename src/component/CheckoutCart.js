@@ -89,7 +89,7 @@ export const CheckoutCart = ({ Product }) => {
                           className="bg-red-500 p-1"
                           onClick={() => handleRemoveProduct(item.cartID)}
                         >
-                          Cancel
+                          Remove
                         </button>
                       </div>
                     </td>
